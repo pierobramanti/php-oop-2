@@ -5,22 +5,24 @@ class Product {
     public $price;
     public $categories;
 
-
-// Costruttore
+    // Costruttore
     public function __construct($name, $price, $categories) {
         $this->name = $name;
         $this->price = $price;
         $this->categories = $categories;
     }
 
-// funzione   
+    // Funzione   
     public function GetInfo() {
-        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . implode(', ', $this->categories) . ".";
+        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categories . ".";
     }
 }
 
+$food1 = new Product("crochette", "20$", "Dog");
+echo $food1->GetInfo(); 
 
 ?>
+
 
 
 <!DOCTYPE html>
