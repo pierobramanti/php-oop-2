@@ -43,15 +43,34 @@ class FoodProduct extends Product {
 }
 
 
+class ToyProduct extends Product {
+    public $material;
+
+    public function __construct($name, $price, $categorie, $material) {
+        parent::__construct($name, $price, $categorie);
+        $this->material = $material;
+    }
+
+    public function GetInfo() {
+        return parent::GetInfo() . " The toy is made of " . $this->material . "."; 
+    }
+}
+
+
 $dog = new Categories("Cane");
 $cat = new Categories("Gatto");
 
 var_dump($dog);
 var_dump($cat);
 
-// Stampo per testare classe figlia
+// Stampo per testare classe figlia cibo
 $food1 = new FoodProduct("crochette", "20$", "Dog", "Chicken");
 echo $food1->GetInfo(); 
+
+echo "<br>";
+// Stampo per testare classe figlia giochi
+$toy1 = new ToyProduct("pallina", "5$", "Cat", "plastic");
+echo $toy1->GetInfo(); 
 
 ?>
 
