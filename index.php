@@ -17,7 +17,7 @@ class Product {
     public $categorie; 
 
     // Costruttore
-    public function __construct($name, $price, $categorie) {
+    public function __construct($name, $price, Categories $categorie) {
         $this->name = $name;
         $this->price = $price;
         $this->categorie = $categorie; 
@@ -25,7 +25,7 @@ class Product {
 
     // Funzione   
     public function GetInfo() {
-        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categorie  . "."; 
+        return $this->name . " " . $this->price . " " . $this->categorie->animal . " " . $this->categorie->icon;
     }
 }
 
@@ -34,7 +34,7 @@ class Product {
 class FoodProduct extends Product {
     public $flavor;
 
-    public function __construct($name, $price, $categorie, $flavor) {
+    public function __construct($name, $price, Categories $categorie, $flavor) {
         parent::__construct($name, $price, $categorie); 
         $this->flavor = $flavor;
     }
@@ -44,11 +44,11 @@ class FoodProduct extends Product {
     }
 }
 
-// classe figlia giocattoli
+// Classe figlia giocattoli
 class ToyProduct extends Product {
     public $material;
 
-    public function __construct($name, $price, $categorie, $material) {
+    public function __construct($name, $price, Categories $categorie, $material) {
         parent::__construct($name, $price, $categorie);
         $this->material = $material;
     }
@@ -59,22 +59,23 @@ class ToyProduct extends Product {
 }
 
 
-// classe figlia cucce
+// Classe figlia cucce
 class KennelProduct extends Product {
     public $size;
     public $material;
 
-    public function __construct($name, $price, $categorie, $size, $material) {
+    public function __construct($name, $price, Categories $categorie, $size, $material) {
         parent::__construct($name, $price, $categorie);  
         $this->size = $size;
         $this->material = $material;
     }
+
     public function GetInfo() {
         return parent::GetInfo() . " The kennel size is " . $this->size . " and it is made of " . $this->material . ".";
     }
 }
 
-
+// Creazione di categorie
 $dog = new Categories("Cane", "🐶");
 $cat = new Categories("Gatto", "🐱");
 
@@ -82,20 +83,21 @@ var_dump($dog);
 var_dump($cat);
 
 // Stampo per testare classe figlia cibo
-$food1 = new FoodProduct("crochette", "20$", "Dog", "Chicken");
+$food1 = new FoodProduct("crochette", "20$", $dog, "Chicken");
 echo $food1->GetInfo(); 
 
 echo "<br>";
 // Stampo per testare classe figlia giochi
-$toy1 = new ToyProduct("pallina", "5$", "Cat", "plastic");
+$toy1 = new ToyProduct("pallina", "5$", $cat, "plastic");
 echo $toy1->GetInfo(); 
 
-// stampo per la classe figlia cucce
+// Stampo per la classe figlia cucce
 echo "<br>";
-$kennel1 = new KennelProduct("Cuccia", "80$", "Dog","3mq", "Cotton");
+$kennel1 = new KennelProduct("Cuccia", "80$", $dog, "3mq", "Cotton");
 echo $kennel1->GetInfo(); 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
