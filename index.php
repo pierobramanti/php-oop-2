@@ -1,5 +1,5 @@
 <?php
-// classe per gli animali
+// Classe per gli animali
 class Categories {
     public $animal;
 
@@ -12,27 +12,28 @@ class Categories {
 class Product {
     public $name;
     public $price;
-    public $categorie;
+    public $categorie; 
 
     // Costruttore
     public function __construct($name, $price, $categorie) {
         $this->name = $name;
         $this->price = $price;
-        $this->categories = $categorie;
+        $this->categorie = $categorie; 
     }
 
     // Funzione   
     public function GetInfo() {
-        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categories . ".";
+        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categorie . "."; 
     }
 }
 
 $food1 = new Product("crochette", "20$", "Dog");
 echo $food1->GetInfo(); 
 
+$dog = new Categories("cane");
+var_dump($dog);
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
