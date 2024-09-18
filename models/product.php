@@ -1,0 +1,79 @@
+<?php
+
+// Classe per gli animali
+class Categories {
+    public $animal;
+    public $icon;
+
+    public function __construct($animal, $icon) {
+        $this->animal = $animal;
+        $this->icon = $icon;
+    }
+}
+
+
+class Products {
+    public $name;
+    public $price;
+    public $categorie; 
+
+    // Costruttore
+    public function __construct($name, $price, Categories $categorie) {
+        $this->name = $name;
+        $this->price = $price;
+        $this->categorie = $categorie; 
+    }
+
+    // Funzione   
+    public function GetInfo() {
+        return $this->name . " " . $this->price . " " . $this->categorie->animal . " " . $this->categorie->icon;
+    }
+}
+
+
+// Classe figlia cibo
+class FoodProduct extends Products {
+    public $flavor;
+
+    public function __construct($name, $price, Categories $categorie, $flavor) {
+        parent::__construct($name, $price, $categorie); 
+        $this->flavor = $flavor;
+    }
+
+    public function GetInfo() {
+        return  " The flavor is " . $this->flavor . ".";
+    }
+}
+
+// Classe figlia giocattoli
+class ToyProduct extends Products {
+    public $material;
+
+    public function __construct($name, $price, Categories $categorie, $material) {
+        parent::__construct($name, $price, $categorie);
+        $this->material = $material;
+    }
+
+    public function GetInfo() {
+        return  " The toy is made of " . $this->material . "."; 
+    }
+}
+
+
+// Classe figlia cucce
+class KennelProduct extends Products {
+    public $size;
+    public $material;
+
+    public function __construct($name, $price, Categories $categorie, $size, $material) {
+        parent::__construct($name, $price, $categorie);  
+        $this->size = $size;
+        $this->material = $material;
+    }
+
+    public function GetInfo() {
+        return  " The kennel size is " . $this->size . " and it is made of " . $this->material . ".";
+    }
+}
+
+?>
