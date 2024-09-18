@@ -4,6 +4,14 @@ class Product {
     public $name;
     public $price;
     public $categories;
+
+
+// Costruttore
+    public function __construct($name, $price, $categories) {
+        $this->name = $name;
+        $this->price = $price;
+        $this->categories = $categories;
+    }
 }
 
 ?>
