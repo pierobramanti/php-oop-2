@@ -40,7 +40,7 @@ class FoodProduct extends Products {
     }
 
     public function GetInfo() {
-        return parent::GetInfo() . " The flavor is " . $this->flavor . ".";
+        return  " The flavor is " . $this->flavor . ".";
     }
 }
 
@@ -54,7 +54,7 @@ class ToyProduct extends Products {
     }
 
     public function GetInfo() {
-        return parent::GetInfo() . " The toy is made of " . $this->material . "."; 
+        return  " The toy is made of " . $this->material . "."; 
     }
 }
 
@@ -71,13 +71,13 @@ class KennelProduct extends Products {
     }
 
     public function GetInfo() {
-        return parent::GetInfo() . " The kennel size is " . $this->size . " and it is made of " . $this->material . ".";
+        return  " The kennel size is " . $this->size . " and it is made of " . $this->material . ".";
     }
 }
 
 // Creazione di categorie
-$dog = new Categories("Cane", "🐶");
-$cat = new Categories("Gatto", "🐱");
+$dog = new Categories("Dog", "🐶");
+$cat = new Categories("Cat", "🐱");
 
 
 // Creazione delle istanze dei prodotti
@@ -116,9 +116,24 @@ $products = [
     <title>Animal Kingdom Cards</title>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <div class="row">
+            <?php foreach ($products as $product): ?>
+            <div class="col-md-4 mt-4">
+                <div class="card mb-4 h-100">
+                    <div class="card-header">
+                        <?php echo $product->name; ?>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Price: <?php echo $product->price; ?></h5>
+                        <p class="card-text">This product is made for: <?php echo $product->categorie->icon . " " . $product->categorie->animal; ?></p>
+                        <p class="card-text">About this Product:<?php echo $product->GetInfo(); ?></p>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
         </div>
     </div>
+</body>
 </body>
 </html>
