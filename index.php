@@ -1,15 +1,24 @@
 <?php
+// classe per gli animali
+class Categories {
+    public $animal;
+
+    public function __construct($animal) {
+        $this->animal = $animal;
+    }
+}
+
 
 class Product {
     public $name;
     public $price;
-    public $categories;
+    public $categorie;
 
     // Costruttore
-    public function __construct($name, $price, $categories) {
+    public function __construct($name, $price, $categorie) {
         $this->name = $name;
         $this->price = $price;
-        $this->categories = $categories;
+        $this->categories = $categorie;
     }
 
     // Funzione   
