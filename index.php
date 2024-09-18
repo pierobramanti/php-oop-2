@@ -12,7 +12,13 @@ class Product {
         $this->price = $price;
         $this->categories = $categories;
     }
+
+// funzione   
+    public function GetInfo() {
+        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . implode(', ', $this->categories) . ".";
+    }
 }
+
 
 ?>
 
