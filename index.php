@@ -23,15 +23,35 @@ class Product {
 
     // Funzione   
     public function GetInfo() {
-        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categorie . "."; 
+        return "This product is called " . $this->name . ", its price is " . $this->price . ", and it is a product for " . $this->categorie  . "."; 
     }
 }
 
-$food1 = new Product("crochette", "20$", "Dog");
-echo $food1->GetInfo(); 
 
-$dog = new Categories("cane");
+// Classe figlia
+class FoodProduct extends Product {
+    public $flavor;
+
+    public function __construct($name, $price, $categorie, $flavor) {
+        parent::__construct($name, $price, $categorie); 
+        $this->flavor = $flavor;
+    }
+
+    public function GetInfo() {
+        return parent::GetInfo() . " The flavor is " . $this->flavor . ".";
+    }
+}
+
+
+$dog = new Categories("Cane");
+$cat = new Categories("Gatto");
+
 var_dump($dog);
+var_dump($cat);
+
+// Stampo per testare classe figlia
+$food1 = new FoodProduct("crochette", "20$", "Dog", "Chicken");
+echo $food1->GetInfo(); 
 
 ?>
 
