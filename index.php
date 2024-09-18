@@ -28,7 +28,7 @@ class Product {
 }
 
 
-// Classe figlia
+// Classe figlia cibo
 class FoodProduct extends Product {
     public $flavor;
 
@@ -42,7 +42,7 @@ class FoodProduct extends Product {
     }
 }
 
-
+// classe figlia giocattoli
 class ToyProduct extends Product {
     public $material;
 
@@ -53,6 +53,22 @@ class ToyProduct extends Product {
 
     public function GetInfo() {
         return parent::GetInfo() . " The toy is made of " . $this->material . "."; 
+    }
+}
+
+
+// classe figlia cucce
+class KennelProduct extends Product {
+    public $size;
+    public $material;
+
+    public function __construct($name, $price, $categorie, $size, $material) {
+        parent::__construct($name, $price, $categorie);  
+        $this->size = $size;
+        $this->material = $material;
+    }
+    public function GetInfo() {
+        return parent::GetInfo() . " The kennel size is " . $this->size . " and it is made of " . $this->material . ".";
     }
 }
 
@@ -71,6 +87,10 @@ echo "<br>";
 // Stampo per testare classe figlia giochi
 $toy1 = new ToyProduct("pallina", "5$", "Cat", "plastic");
 echo $toy1->GetInfo(); 
+
+echo "<br>";
+$kennel1 = new KennelProduct("Cuccia", "80$", "Dog","3mq", "Cotton");
+echo $kennel1->GetInfo(); 
 
 ?>
 
