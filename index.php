@@ -2,9 +2,11 @@
 // Classe per gli animali
 class Categories {
     public $animal;
+    public $icon;
 
-    public function __construct($animal) {
+    public function __construct($animal, $icon) {
         $this->animal = $animal;
+        $this->icon = $icon;
     }
 }
 
@@ -73,8 +75,8 @@ class KennelProduct extends Product {
 }
 
 
-$dog = new Categories("Cane");
-$cat = new Categories("Gatto");
+$dog = new Categories("Cane", "🐶");
+$cat = new Categories("Gatto", "🐱");
 
 var_dump($dog);
 var_dump($cat);
@@ -88,6 +90,7 @@ echo "<br>";
 $toy1 = new ToyProduct("pallina", "5$", "Cat", "plastic");
 echo $toy1->GetInfo(); 
 
+// stampo per la classe figlia cucce
 echo "<br>";
 $kennel1 = new KennelProduct("Cuccia", "80$", "Dog","3mq", "Cotton");
 echo $kennel1->GetInfo(); 
