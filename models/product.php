@@ -19,10 +19,19 @@ class Products {
 
     // Costruttore
     public function __construct($name, $price, Categories $categorie, $image) {
-        $this->name = $name;
-        $this->price = $price;
-        $this->categorie = $categorie; 
-        $this->image = $image;  
+        try {
+            // Controlla se il prezzo è numerico e maggiore o uguale a 0
+            if (!is_numeric($price) || $price < 0) {
+                throw new Exception("Errore: Il prezzo deve essere un numero positivo o zero.");
+            }
+            $this->name = $name;
+            $this->price = $price;
+            $this->categorie = $categorie; 
+            $this->image = $image;
+        } catch (Exception $e) {
+            // Mostra il messaggio di errore
+            echo $e->getMessage();
+        }
     }
 
     // Funzione   
@@ -30,6 +39,7 @@ class Products {
         return $this->name . " " . $this->price . " " . $this->categorie->animal . " " . $this->categorie->icon . " Image: " . $this->image;
     }
 }
+
 
 // Classe figlia cibo
 class FoodProduct extends Products {

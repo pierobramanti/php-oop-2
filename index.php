@@ -24,7 +24,7 @@ include __DIR__ . '/models/data.php';
                     <?php echo $product->name; ?>
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Price: <?php echo $product->price; ?></h5>
+                    <h5 class="card-title">Price: $ <?php echo $product->price; ?></h5>
                     <p class="card-text">This product is made for: <?php echo $product->categorie->icon . " " . $product->categorie->animal; ?></p>
                     <p class="card-text">About this Product: <?php echo $product->GetInfo(); ?></p>
                 </div>
