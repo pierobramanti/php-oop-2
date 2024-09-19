@@ -11,37 +11,37 @@ class Categories {
     }
 }
 
-
 class Products {
     public $name;
     public $price;
-    public $categorie; 
+    public $categorie;
+    public $image;  
 
     // Costruttore
-    public function __construct($name, $price, Categories $categorie) {
+    public function __construct($name, $price, Categories $categorie, $image) {
         $this->name = $name;
         $this->price = $price;
         $this->categorie = $categorie; 
+        $this->image = $image;  
     }
 
     // Funzione   
     public function GetInfo() {
-        return $this->name . " " . $this->price . " " . $this->categorie->animal . " " . $this->categorie->icon;
+        return $this->name . " " . $this->price . " " . $this->categorie->animal . " " . $this->categorie->icon . " Image: " . $this->image;
     }
 }
-
 
 // Classe figlia cibo
 class FoodProduct extends Products {
     public $flavor;
 
-    public function __construct($name, $price, Categories $categorie, $flavor) {
-        parent::__construct($name, $price, $categorie); 
+    public function __construct($name, $price, Categories $categorie, $image, $flavor) {
+        parent::__construct($name, $price, $categorie, $image); 
         $this->flavor = $flavor;
     }
 
     public function GetInfo() {
-        return  " The flavor is " . $this->flavor . ".";
+        return " The flavor is " . $this->flavor ;
     }
 }
 
@@ -49,8 +49,8 @@ class FoodProduct extends Products {
 class ToyProduct extends Products {
     public $material;
 
-    public function __construct($name, $price, Categories $categorie, $material) {
-        parent::__construct($name, $price, $categorie);
+    public function __construct($name, $price, Categories $categorie, $image, $material) {
+        parent::__construct($name, $price, $categorie, $image);
         $this->material = $material;
     }
 
@@ -59,14 +59,13 @@ class ToyProduct extends Products {
     }
 }
 
-
 // Classe figlia cucce
 class KennelProduct extends Products {
     public $size;
     public $material;
 
-    public function __construct($name, $price, Categories $categorie, $size, $material) {
-        parent::__construct($name, $price, $categorie);  
+    public function __construct($name, $price, Categories $categorie, $image, $size, $material) {
+        parent::__construct($name, $price, $categorie, $image);  
         $this->size = $size;
         $this->material = $material;
     }
